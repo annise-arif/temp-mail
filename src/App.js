@@ -51,44 +51,49 @@ function App() {
           marginTop: "0px",
         }}
       >
-        <img className="ml-40 lg:ml-80"
+        <img
+          className="ml-40 lg:ml-80"
           style={{ width: "full", height: "40px" }}
           src="logo-mail.png"
           alt="logo"
         />
       </h1>
-      <br />
-      <main className="">
-        <div className="border border-dashed rounded-lg border-[#383b44] p-8 w-3/5 h-64 mx-auto">
-          <h1 className="text-2xl font-bold -mt-2 mb-4 text-teal-500">
-            Make Your Temporary Email Address
-          </h1>
-          <button
-            className="btn bg-[#312e2ea2] border-none text-white font-bold py-2 px-4 mt-4 rounded-full"
-            onClick={handleEmail}
-          >
-            Generate Email
-          </button>
-          <div className="lg:flex text-center justify-between lg:bg-[#55575ae1] rounded-full pb-3 pt-0 mt-3 lg:w-2/4 mx-auto">
-            <span
-              title="Your Temporary Email"
-              className="mt-5 relative mr-2 lg:text-white lg:ml-10 lg:text-lg sm:text-sm text-xs"
-              id="email-display"
-            >
-              Example@gmail.com
-            </span>
+      <main className="mt-0">
+        <div className="bg-[#343a40] py-8 mt-0">
+          <div className="border border-dashed rounded-lg border-[#616266] p-8 w-3/5 h-64 mx-auto">
+            <h1 className="text-2xl font-bold -mt-2 mb-4 text-teal-500">
+              Make Your Temporary Email Address
+            </h1>
             <button
-              title="Coyp to clipboard"
-              className=" mr-3 bg-teal-400 hover:bg-slate-200 pt-3 px-3 pb-1 mt-3 rounded-full text-gray-500"
-              onClick={copyContent}
+              className="btn bg-[#312e2ea2] border-none text-white font-bold py-2 px-4 mt-4 rounded-full"
+              onClick={handleEmail}
             >
-              <span class="material-symbols-outlined">content_copy</span>
+              Generate Email
             </button>
+            <div className="lg:flex text-center justify-between lg:bg-[#55575ae1] rounded-full pb-3 pt-0 mt-3 lg:w-2/4 mx-auto">
+              <span
+                title="Your Temporary Email"
+                className="mt-5 relative mr-2 lg:text-white lg:ml-10 lg:text-lg sm:text-sm text-xs"
+                id="email-display"
+              >
+                Example@gmail.com
+              </span>
+              <button
+                title="Coyp to clipboard"
+                className=" mr-3 bg-teal-400 hover:bg-slate-200 pt-3 px-3 pb-1 mt-3 rounded-full text-gray-500"
+                onClick={copyContent}
+              >
+                <span class="material-symbols-outlined">content_copy</span>
+              </button>
+            </div>
           </div>
         </div>
 
         <div className="">
-          <h3 className="text-teal-600 font-bold text-xl mb-7" style={{ textDecoration: "underline", marginTop: "52px" }}>
+          <h3
+            className="text-teal-600 font-bold text-xl mb-7"
+            style={{ textDecoration: "underline", marginTop: "52px" }}
+          >
             All Mail
           </h3>
           <div className="">
@@ -96,13 +101,17 @@ function App() {
             {allMail?.map((m, i) => {
               return (
                 <div className="" key={i}>
-                  
                   <div class="card p-6 mx-auto w-3/5 mt-2 card-side bg-gray-600 shadow-xl">
                     <figure className="rounded-none align-middle mt-5">
-                    <p>From: {m.from_parsed[0].address} <br /> Name: {m.from_parsed[0].name}</p>                                      
+                      <p>
+                        From: {m.from_parsed[0].address} <br /> Name:{" "}
+                        {m.from_parsed[0].name}
+                      </p>
                     </figure>
                     <div class="card-body overflow-x-auto">
-                      <h2 className="card-title text-clip overflow-hidden">Sub: {m.subject}</h2>
+                      <h2 className="card-title text-clip overflow-hidden">
+                        Sub: {m.subject}
+                      </h2>
                       <p>{m.text}</p>
                     </div>
                   </div>
@@ -114,7 +123,8 @@ function App() {
       </main>
       <br />
       <footer className="bg-[#383b44] py-4 justify-end flex">
-      <img className="mr-36 lg:mr-96"
+        <img
+          className="mr-36 lg:mr-96"
           style={{ width: "full", height: "40px", display: "inline-block" }}
           src="logo-mail.png"
           alt="logo"
