@@ -44,34 +44,82 @@ function App() {
 
   return (
     <div className="App">
-      <h1 style={{backgroundColor: "gray", padding: "20px 0px 20px 0px", marginTop: "0px"}}>header</h1>
+      <h1
+        className="bg-[#1f2125]"
+        style={{
+          padding: "20px 0px 20px 0px",
+          marginTop: "0px",
+        }}
+      >
+        <img className="ml-40 lg:ml-80"
+          style={{ width: "full", height: "40px" }}
+          src="logo-mail.png"
+          alt="logo"
+        />
+      </h1>
       <br />
-      <main>
-        <button onClick={handleEmail}>Generate Email</button>
-        <div>
-          <div id="email-display" style={{ margin: "15px 0px 15px 0px" }}></div>{" "}
-          <button onClick={copyContent}>Copy Email</button>
+      <main className="">
+        <div className="border border-dashed rounded-lg border-[#383b44] p-8 w-3/5 h-64 mx-auto">
+          <h1 className="text-2xl font-bold -mt-2 mb-4 text-teal-500">
+            Make Your Temporary Email Address
+          </h1>
+          <button
+            className="btn bg-[#312e2ea2] border-none text-white font-bold py-2 px-4 mt-4 rounded-full"
+            onClick={handleEmail}
+          >
+            Generate Email
+          </button>
+          <div className="lg:flex text-center justify-between lg:bg-[#55575ae1] rounded-full pb-3 pt-0 mt-3 lg:w-2/4 mx-auto">
+            <span
+              title="Your Temporary Email"
+              className="mt-5 relative mr-2 lg:text-white lg:ml-10 lg:text-lg sm:text-sm text-xs"
+              id="email-display"
+            >
+              Example@gmail.com
+            </span>
+            <button
+              title="Coyp to clipboard"
+              className=" mr-3 bg-teal-400 hover:bg-slate-200 pt-3 px-3 pb-1 mt-3 rounded-full text-gray-500"
+              onClick={copyContent}
+            >
+              <span class="material-symbols-outlined">content_copy</span>
+            </button>
+          </div>
         </div>
 
-        <div>
-          <h3 style={{textDecoration: "underline", marginTop: "52px"}}>All Mail</h3>
-          <div>
+        <div className="">
+          <h3 className="text-teal-600 font-bold text-xl mb-7" style={{ textDecoration: "underline", marginTop: "52px" }}>
+            All Mail
+          </h3>
+          <div className="">
+            <h1>Count of Mail{allMail.length}</h1>
             {allMail?.map((m, i) => {
               return (
-                <div key={i}>
-                  <p>Name: {m.from_parsed[0].name}</p>
-                  <p>From: {m.from_parsed[0].address}</p>
-                  <div>Subject: {m.subject}</div>
-                  <hr />
+                <div className="" key={i}>
+                  
+                  <div class="card p-6 mx-auto w-3/5 mt-2 card-side bg-gray-600 shadow-xl">
+                    <figure className="rounded-none align-middle mt-5">
+                    <p>From: {m.from_parsed[0].address} <br /> Name: {m.from_parsed[0].name}</p>                                      
+                    </figure>
+                    <div class="card-body overflow-x-auto">
+                      <h2 className="card-title text-clip overflow-hidden">Sub: {m.subject}</h2>
+                      <p>{m.text}</p>
+                    </div>
+                  </div>
                 </div>
-                
               );
             })}
           </div>
         </div>
       </main>
       <br />
-      <footer style={{backgroundColor: "gray"}}>footer</footer>
+      <footer className="bg-[#383b44] py-4 justify-end flex">
+      <img className="mr-36 lg:mr-96"
+          style={{ width: "full", height: "40px", display: "inline-block" }}
+          src="logo-mail.png"
+          alt="logo"
+        />
+      </footer>
     </div>
   );
 }
