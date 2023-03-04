@@ -3,7 +3,7 @@ import "./App.css";
 
 function App() {
   const [allMail, setAllmail] = useState([]);
-  console.log(allMail);
+  const [viewMail, setViewMail] = useState([]);
 
   useEffect(() => {
     fetch(
@@ -65,7 +65,7 @@ function App() {
               Make Your Temporary Email Address
             </h1>
             <button
-              className="btn bg-[#312e2ea2] border-none text-white font-bold py-2 px-4 mt-4 rounded-full"
+              className="btn bg-[#312e2eef] border-none text-white font-bold py-2 px-4 mt-4 rounded-full"
               onClick={handleEmail}
             >
               Generate Email
@@ -97,23 +97,50 @@ function App() {
             All Mail
           </h3>
           <div className="">
-            <h1>Count of Mail{allMail.length}</h1>
+            <h1>Count of Mail: {allMail.length}</h1>
             {allMail?.map((m, i) => {
               return (
                 <div className="" key={i}>
-                  <div class="card p-6 mx-auto w-3/5 mt-2 card-side bg-gray-600 shadow-xl">
-                    <figure className="rounded-none align-middle mt-5">
-                      <p>
-                        From: {m.from_parsed[0].address} <br /> Name:{" "}
-                        {m.from_parsed[0].name}
-                      </p>
-                    </figure>
-                    <div class="card-body overflow-x-auto">
-                      <h2 className="card-title text-clip overflow-hidden">
-                        Sub: {m.subject}
-                      </h2>
-                      <p>{m.text}</p>
+                  {console.log(m.id)}
+
+                  <div class="rounded-lg p-4 mx-auto lg:w-3/5 mt-3 card-side bg-gray-600 shadow-xl">
+                    <div className="lg:flex justify-between w-full">
+                      <div className="mr-4">
+                        <p>From: {m.from_parsed[0].address}</p>
+                        <p className="text-left">
+                          Name: {m.from_parsed[0].name}
+                        </p>
+                      </div>
+                      <div className="mr-4 w-64">
+                        <p className="text-ellipsis overflow-hidden ...">
+                          To: {m.to}
+                        </p>
+                      </div>
+                      <div className="mr-4 w-40">
+                        <p className="text-ellipsis overflow-hidden ...">
+                          Subject: {m.subject}
+                        </p>
+                      </div>
+                      <div className="">
+                        <button
+                          onClick={() => setViewMail((prev) => {
+                            if(prev.includes(m.id)){
+                              return prev.filter(i=>i!==m.id)
+                            }
+                            return [...prev, m.id]
+                          })}
+                          className=" bg-[#666768ef] border-none text-whitesmock font-bold px-3 py-1 rounded-xl"
+                        >
+                          View Email
+                        </button>
+                      </div>
                     </div>
+
+                    {viewMail.includes(m.id) && (
+                      <div className="viewMail mt-8">
+                        <p>{m.text}</p>
+                      </div>
+                    )}
                   </div>
                 </div>
               );
