@@ -61,15 +61,10 @@ function App() {
       <main className="mt-0">
         <div className="bg-[#343a40] py-8 mt-0">
           <div className="border border-dashed rounded-lg border-[#616266] p-8 w-3/5 h-64 mx-auto">
-            <h1 className="text-2xl font-bold -mt-2 mb-4 text-teal-500">
+            <h1 className="text-2xl font-bold -mt-2 mb-7 text-teal-500">
               Make Your Temporary Email Address
             </h1>
-            <button
-              className="btn bg-[#312e2eef] border-none text-white font-bold py-2 px-4 mt-4 rounded-full"
-              onClick={handleEmail}
-            >
-              Generate Email
-            </button>
+            
             <div className="lg:flex text-center justify-between lg:bg-[#55575ae1] rounded-full pb-3 pt-0 mt-3 lg:w-2/4 mx-auto">
               <span
                 title="Your Temporary Email"
@@ -80,12 +75,18 @@ function App() {
               </span>
               <button
                 title="Coyp to clipboard"
-                className=" mr-3 bg-teal-400 hover:bg-slate-200 pt-3 px-3 pb-1 mt-3 rounded-full text-gray-500"
+                className=" mr-3 bg-teal-500 hover:bg-teal-700 pt-3 px-3 pb-1 mt-3 rounded-full text-gray-500"
                 onClick={copyContent}
               >
                 <span class="material-symbols-outlined">content_copy</span>
               </button>
             </div>
+            <button
+              className="btn bg-teal-700 hover:bg-teal-500 border-none text-white font-bold py-2 px-4 mt-4 rounded-full"
+              onClick={handleEmail}
+            >
+              Generate Email
+            </button>
           </div>
         </div>
 
@@ -129,7 +130,7 @@ function App() {
                             }
                             return [...prev, m.id]
                           })}
-                          className=" bg-[#666768ef] border-none text-whitesmock font-bold px-3 py-1 rounded-xl"
+                          className=" bg-teal-500 border-none text-white font-bold px-3 py-1 rounded-xl"
                         >
                           View Email
                         </button>
