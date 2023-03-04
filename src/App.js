@@ -71,7 +71,7 @@ function App() {
                 className="mt-5 relative mr-2 lg:text-white lg:ml-10 lg:text-lg sm:text-sm text-xs"
                 id="email-display"
               >
-                Example@gmail.com
+                cibce.iprleyy@inbox.testmail.app
               </span>
               <button
                 title="Coyp to clipboard"
