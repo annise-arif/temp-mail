@@ -103,8 +103,6 @@ function App() {
             {allMail?.map((m, i) => {
               return (
                 <div className="" key={i}>
-                  {console.log(m.id)}
-
                   <div className="rounded-lg p-4 mx-auto lg:w-3/5 mt-3 card-side bg-gray-600 shadow-xl">
                     <div className="lg:flex justify-between w-full">
                       <div className="mr-4">
