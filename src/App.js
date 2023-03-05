@@ -5,15 +5,16 @@ function App() {
   const [allMail, setAllmail] = useState([]);
   const [viewMail, setViewMail] = useState([]);
 
+  const URI = process.env.REACT_APP_URI;
+  const APIKEY = process.env.REACT_APP_API_KEY;
+  const NAMESPACE = process.env.REACT_APP_NAME_SPACE;
+
   useEffect(() => {
-    fetch(
-      "https://api.testmail.app/api/json?apikey=87384f5c-db35-4c17-8efa-e43eae70fd4e&namespace=cibce&pretty=true",
-      {
-        headers: {
-          Authorization: "Bearer 87384f5c-db35-4c17-8efa-e43eae70fd4e",
-        },
-      }
-    )
+    fetch(`${URI}?apikey=${APIKEY}&namespace=${NAMESPACE}&pretty=true`, {
+      headers: {
+        Authorization: "Bearer 87384f5c-db35-4c17-8efa-e43eae70fd4e",
+      },
+    })
       .then((res) => res.json())
       .then((data) => setAllmail(data.emails));
   }, []);
@@ -27,7 +28,7 @@ function App() {
       );
     }).join("");
     const domain = domains[Math.floor(Math.random() * domains.length)];
-    const email = `cibce.${username}@${domain}`;
+    const email = `${NAMESPACE}.${username}@${domain}`;
 
     document.getElementById("email-display").innerHTML = email; // display the generated email in the email display
   };
@@ -64,7 +65,7 @@ function App() {
             <h1 className="text-2xl font-bold -mt-2 mb-7 text-teal-500">
               Make Your Temporary Email Address
             </h1>
-            
+
             <div className="lg:flex text-center justify-between lg:bg-[#55575ae1] rounded-full pb-3 pt-0 mt-3 lg:w-2/4 mx-auto">
               <span
                 title="Your Temporary Email"
@@ -78,7 +79,7 @@ function App() {
                 className=" mr-3 bg-teal-500 hover:bg-teal-700 pt-3 px-3 pb-1 mt-3 rounded-full text-gray-500"
                 onClick={copyContent}
               >
-                <span class="material-symbols-outlined">content_copy</span>
+                <span className="material-symbols-outlined">content_copy</span>
               </button>
             </div>
             <button
@@ -104,7 +105,7 @@ function App() {
                 <div className="" key={i}>
                   {console.log(m.id)}
 
-                  <div class="rounded-lg p-4 mx-auto lg:w-3/5 mt-3 card-side bg-gray-600 shadow-xl">
+                  <div className="rounded-lg p-4 mx-auto lg:w-3/5 mt-3 card-side bg-gray-600 shadow-xl">
                     <div className="lg:flex justify-between w-full">
                       <div className="mr-4">
                         <p>From: {m.from_parsed[0].address}</p>
@@ -124,12 +125,14 @@ function App() {
                       </div>
                       <div className="">
                         <button
-                          onClick={() => setViewMail((prev) => {
-                            if(prev.includes(m.id)){
-                              return prev.filter(i=>i!==m.id)
-                            }
-                            return [...prev, m.id]
-                          })}
+                          onClick={() =>
+                            setViewMail((prev) => {
+                              if (prev.includes(m.id)) {
+                                return prev.filter((i) => i !== m.id);
+                              }
+                              return [...prev, m.id];
+                            })
+                          }
                           className=" bg-teal-500 border-none text-white font-bold px-3 py-1 rounded-xl"
                         >
                           View Email
