@@ -1,10 +1,10 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is for create temporary mail.
 
 ## Available Scripts
 
-In the project directory, you can run:
+any one can use this. just clone the project then npm install. then create a .env file and reeate api key and name space and uri then add the env to the app.js
 
 ### `npm start`
 
